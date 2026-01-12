@@ -12,8 +12,7 @@ async function registerUser(req,res){
         })
     }
     const salt = await bcrypt.genSalt(10)
-    const hash = await bcrypt.hash(password,salt)
-    console.log(1)
+    const hash = await bcrypt.hash(password,salt)// hashing password
     await pool.query(
         'INSERT INTO users(email,password_hash) VALUES ($1,$2)',
         [email,hash]

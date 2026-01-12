@@ -2,12 +2,11 @@ const bcrypt = require('bcrypt')
 const pool = require('../db')
 async function login(req,res){
     const {email,password} = req.body
-    console.log(1)
+    
     const exists = await pool.query(
         'SELECT email FROM users WHERE email = $1',
         [email]
     )
-    console.log(1)
     if(!exists.rowCount){
         return res.status(400).json({
             message : "User does not exist"
