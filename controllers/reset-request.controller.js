@@ -18,7 +18,7 @@ async function sendMail(email,token) {
         text: "Hello world2", 
         html: `<b>This mail is only for testing purposes</b>
         <p>click on the link below to reset your password</p>
-        <p><a href='http://localhost:3000/reset-password?token=${token}'>Link</a></p>`, 
+        <p><a href='http://${process.env.BASE_URL}/reset-password?token=${token}'>Link</a></p>`, 
     })
 }
 
