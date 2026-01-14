@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cryption</title>
 </head>
 <body>
-    <form method="POST" action="/reset-password">
-        <input type="hidden" name="token" value = "<%= token %>" >
-        <input type="password" name="password">
-        <input type="password" name="confirmPassword">
-        <button type="submit">Reset</button>
-    </form>
+    <div align="center">Welcome to cryption</div>
+    <div>
+        <a href="http://<%= base_url %>/login">Login</a>
+    </div>
+    <div>
+        <a href="http://<%= base_url %>/register">Register</a>
+    </div>
 </body>
 </html>

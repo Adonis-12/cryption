@@ -1,7 +1,12 @@
 const pool = require('../db')
 const bcrypt = require('bcrypt')
+
+function getRegisterForm(req,res){
+   return res.render("register")
+}
+
 async function registerUser(req,res){
-    const {email,password} = req.body
+    const {name,email,password} = req.body
     const exists = await pool.query(
         'SELECT email FROM users WHERE email = $1',
         [email]
@@ -14,12 +19,13 @@ async function registerUser(req,res){
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password,salt)// hashing password
     await pool.query(
-        'INSERT INTO users(email,password_hash) VALUES ($1,$2)',
-        [email,hash]
+        'INSERT INTO users(name,email,password_hash) VALUES ($1,$2,$3)',
+        [name,email,hash]
     )
-    return res.status(201).json({
-        message : "user registered successfully"
-    })
+    return res.status(201).send("User registered successfully, please login to continue")
 }
 
-module.exports = registerUser
+module.exports = {
+    registerUser,
+    getRegisterForm
+}

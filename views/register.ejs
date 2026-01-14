@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <form method="POST" action="api/users/register" >
+        <label>
+            Name
+            <input type="text" name="name"><br><br>
+        </label>
+        <label>
+            Email
+            <input type="email" name="email" required><br><br>
+        </label>
+        <label>
+            Pasword
+            <input type="password" name="password" required><br><br>
+        </label>
+        <label>
+            Confirm Password
+            <input type="password" name="confirmPassword" required><br><br>
+        </label>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

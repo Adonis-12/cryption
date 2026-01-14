@@ -1,8 +1,10 @@
 const express = require('express')
 const LoginRouter = express.Router()
 const asyncHandler = require('../controllers/asyncHandler')
-const login = require('../controllers/login.controller')
-const validateUser = require('../middlewares/validateUser.middleware')
+const {getloginForm,login }= require('../controllers/login.controller')
+const validateInput = require('../middlewares/validateInput.middleware')
+const { guestUsersOnly } = require('../middlewares/authenticateUser.middleware')
 
-LoginRouter.post('/',validateUser,asyncHandler(login))
+LoginRouter.get('/',asyncHandler(guestUsersOnly),getloginForm)
+LoginRouter.post('/',validateInput,asyncHandler(login))
 module.exports = LoginRouter
